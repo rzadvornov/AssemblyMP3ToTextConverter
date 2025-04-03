@@ -1,4 +1,5 @@
 import config.settings
+import pathlib
 import assemblyai as aai
 import os
 from os import listdir
@@ -29,7 +30,8 @@ if __name__ == '__main__':
     OUTPUT_FILE_EXTENSION = ".txt"
     inputDir = "../input"
     outputDir = "../output"
-
+    pathlib.Path(inputDir).mkdir(exist_ok=True)
+    pathlib.Path(outputDir).mkdir(exist_ok=True)
     transcriber = aai.Transcriber()
 
     config = aai.TranscriptionConfig(speaker_labels=True, language_detection=True)
