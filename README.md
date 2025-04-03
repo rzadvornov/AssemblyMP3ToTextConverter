@@ -19,10 +19,9 @@ pip install assemblyai
 
 ## Usage
 1. Put your Assembly API key from https://www.assemblyai.com/ into `config/settings.json`
-2. Create `input` and `output` directories
-3. Upload MP3 files into `input` directory
-4. Run main.py
-5. After processing is finished check results at `output` directory 
+2. Upload MP3 files into `input` directory
+3. Run main.py
+4. After processing is finished check results at `output` directory 
 
 ## Troubleshooting
 - **Slow Processing**: Try reducing the audio quality settings or splitting large files
