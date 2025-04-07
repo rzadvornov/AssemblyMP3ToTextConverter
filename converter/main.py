@@ -2,6 +2,7 @@ import config.settings
 import pathlib
 import assemblyai as aai
 import os
+import pprint
 from os import listdir
 from os.path import isfile, join
 
@@ -17,11 +18,12 @@ def convert(files):
                                       .replace(inputDir, outputDir)
                                       .replace(AUDIO_FILE_EXTENSION, OUTPUT_FILE_EXTENSION))
             with open(output_file_name, "w") as outputFile:
-                outputFile.write("\nFull Transcript: \n\n")
-                outputFile.write(transcript.text)
-                outputFile.write("\nSpeaker Segmentation:\n")
+                pp = pprint.PrettyPrinter(indent=4, stream=outputFile)
+                pp.pprint("Full Transcript:")
+                pp.pprint(transcript.text)
+                pp.pprint("Speaker Segmentation:")
                 for utterance in transcript.utterances:
-                    outputFile.write("Speaker " + utterance.speaker + ":" + utterance.text + "\n")
+                    pp.pprint("Speaker " + utterance.speaker + ":" + utterance.text)
 
 if __name__ == '__main__':
     aai.settings.api_key = config.settings.cfg.API_KEY
