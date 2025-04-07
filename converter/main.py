@@ -24,6 +24,11 @@ def convert(files):
                 pp.pprint("Speaker Segmentation:")
                 for utterance in transcript.utterances:
                     pp.pprint("Speaker " + utterance.speaker + ":" + utterance.text)
+                outputFile.write("\nFull Transcript: \n\n")
+                outputFile.write(transcript.text)
+                outputFile.write("\nSpeaker Segmentation:\n")
+                for utterance in transcript.utterances:
+                    outputFile.write("Speaker " + utterance.speaker + ":" + utterance.text + "\n")
 
 if __name__ == '__main__':
     aai.settings.api_key = config.settings.cfg.API_KEY
