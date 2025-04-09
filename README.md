@@ -15,11 +15,18 @@ Assembly MP3 to Text Converter is a powerful and intuitive application designed 
 ```
 pip install betterconf
 pip install assemblyai
+pip install yt-dlp
 ```
+
+You'll also need FFmpeg installed on your system:
+
+Windows: Download from https://ffmpeg.org/download.html and add it to your PATH
+macOS: brew install ffmpeg (using Homebrew)
+Linux: sudo apt install ffmpeg (Ubuntu/Debian) or sudo yum install ffmpeg (CentOS/RHEL)
 
 ## Usage
 1. Put your Assembly API key from https://www.assemblyai.com/ into `config/settings.json`
-2. Upload MP3 files into `input` directory
+2. Create `urls.txt` file with a list of youtube urls - one url per line at `converter` directory. (Optional upload MP3 files into `input` directory)
 3. Run main.py
 4. After processing is finished check results at `output` directory 
 
