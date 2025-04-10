@@ -20,9 +20,9 @@ pip install yt-dlp
 
 You'll also need FFmpeg installed on your system:
 
-Windows: Download from https://ffmpeg.org/download.html and add it to your PATH
-macOS: brew install ffmpeg (using Homebrew)
-Linux: sudo apt install ffmpeg (Ubuntu/Debian) or sudo yum install ffmpeg (CentOS/RHEL)
+- Windows: Download from https://ffmpeg.org/download.html and add it to your PATH
+- macOS: brew install ffmpeg (using Homebrew)
+- Linux: sudo apt install ffmpeg (Ubuntu/Debian) or sudo yum install ffmpeg (CentOS/RHEL)
 
 ## Usage
 1. Put your Assembly API key from https://www.assemblyai.com/ into `config/settings.json`
