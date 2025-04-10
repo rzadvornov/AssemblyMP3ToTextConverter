@@ -8,7 +8,8 @@ from pathlib import Path
 from typing import Union
 
 def convert_audio(files):
-
+    
+    print(f"[Transcribing] files to {outputDir}...")
     for file in files:
         if file.endswith(AUDIO_FILE_EXTENSION):
             transcript = transcriber.transcribe(file, config)
@@ -18,7 +19,6 @@ def convert_audio(files):
             output_file_name = os.path.join(outputDir, file
                                       .replace(inputDir, outputDir)
                                       .replace(AUDIO_FILE_EXTENSION, OUTPUT_FILE_EXTENSION))
-            print(f"[Transcribing] files to {outputDir}...")
             with open(output_file_name, "w") as outputFile:
                 pp = pprint.PrettyPrinter(indent=4, stream=outputFile)
                 pp.pprint("Full Transcript:")
