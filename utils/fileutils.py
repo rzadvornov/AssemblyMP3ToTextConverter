@@ -10,9 +10,9 @@ def clear_directory_files(
     directory_path: Union[str, Path],
     empty_subfolders: bool = False
 ) -> list:
-    """Irreversibly removes all files inside the specified directory. Optionally
-    clears subfolders from files too. Returns a list with paths Python lacks
-    permission to delete."""
+    """Irreversibly removes all files inside the specified directory. Optionally clears subfolders from files too.
+     Returns a list with paths Python lacks permission to delete."""
+
     if empty_subfolders:
         directory_items = Path(directory_path).rglob("*")
     else:

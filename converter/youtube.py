@@ -13,7 +13,6 @@ def download_mp3_from_youtube_urls(input_dir):
             input_dir: Input directory path
     """
 
-    # Create the input directory if it doesn't exist
     os.makedirs(input_dir, exist_ok=True)
 
     if os.path.isfile("urls.txt"):
@@ -21,12 +20,9 @@ def download_mp3_from_youtube_urls(input_dir):
             lines = set(file.readlines())
             urls = [line.replace(" ", "").replace("\n", "") for line in lines]
 
-        # Using ThreadPoolExecutor for concurrent downloads
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            # Create a list of futures
-            futures = [executor.submit(download_youtube_as_mp3, url, input_dir) for url in urls]
+            futures = [executor.submit(download_single_file_from_youtube_as_mp3, url, input_dir) for url in urls]
 
-            # Wait for all futures to complete
             for future in concurrent.futures.as_completed(futures):
                 try:
                     result = future.result()
@@ -36,17 +32,9 @@ def download_mp3_from_youtube_urls(input_dir):
                     print(f"A download generated an exception: {exc}")
 
 
-def download_youtube_as_mp3(youtube_url, input_dir):
-    """Helper function to download a single audio file."""
+def download_single_file_from_youtube_as_mp3(youtube_url, input_dir):
     try:
-        # Get video info first to get the title
-        with yt_dlp.YoutubeDL({'quiet': True}) as ydl:
-            info = ydl.extract_info(youtube_url, download=False)
-            video_title = info.get('title', 'video')
-            # Clean the title for filename use
-            video_title = "".join(c for c in video_title if c.isalnum() or c in [' ', '-', '_']).strip()
-
-        print(f"[Processing]: {video_title}")
+        video_title = get_video_title(youtube_url)
 
         # Download MP3
         mp3_filename = os.path.join(input_dir, f"{video_title}")
@@ -71,3 +59,12 @@ def download_youtube_as_mp3(youtube_url, input_dir):
     except Exception as e:
         print(f"An error occurred while downloading {youtube_url}: {str(e)}")
         return None
+
+
+def get_video_title(youtube_url):
+    with yt_dlp.YoutubeDL({'quiet': True}) as ydl:
+        info = ydl.extract_info(youtube_url, download=False)
+        video_title = info.get('title', 'video')
+        video_title = "".join(c for c in video_title if c.isalnum() or c in [' ', '-', '_']).strip()
+    print(f"[Processing]: {video_title}")
+    return video_title

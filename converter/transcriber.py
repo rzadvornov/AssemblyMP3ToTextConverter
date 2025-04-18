@@ -25,15 +25,11 @@ def transcribe_audio(files, input_dir, output_dir, max_workers=None):
         max_workers: Maximum number of worker threads (None = auto-determined)
     """
 
-
     print(f"[Transcribing] {len(files)} files to {output_dir} using parallel processing...")
 
-    # Create the output directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)
 
-    # Using ThreadPoolExecutor since I/O operations are involved
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
-        # Create a future for each file
         future_to_file = {
             executor.submit(
                 transcribe_single_file,
@@ -43,7 +39,6 @@ def transcribe_audio(files, input_dir, output_dir, max_workers=None):
             ): file for file in files
         }
 
-        # Process results as they complete
         completed_files = []
         for future in concurrent.futures.as_completed(future_to_file):
             file = future_to_file[future]
@@ -58,7 +53,6 @@ def transcribe_audio(files, input_dir, output_dir, max_workers=None):
     return completed_files
 
 def transcribe_single_file(file, input_dir, output_dir):
-    """Helper function to transcribe a single audio file."""
     if not file.endswith(_AUDIO_FILE_EXTENSION):
         return
 

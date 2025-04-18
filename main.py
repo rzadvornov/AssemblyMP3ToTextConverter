@@ -1,4 +1,3 @@
-import pathlib
 import os
 from utils.fileutils import clear_directory_files
 from converter.youtube import download_mp3_from_youtube_urls
