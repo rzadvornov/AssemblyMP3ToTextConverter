@@ -12,6 +12,7 @@ Assembly MP3 to Text Converter is a powerful and intuitive application designed 
 - **Offline Mode**: Process transcriptions locally without internet connection
 
 ## Installation
+**Works for Python `3.10+`. Previous python versions are not supported due to library dependencies.**
 ```
 pip install betterconf
 pip install assemblyai
@@ -26,7 +27,7 @@ You'll also need FFmpeg installed on your system:
 
 ## Usage
 1. Put your Assembly API key from https://www.assemblyai.com/ into `config/settings.json`
-2. Create `urls.txt` file with a list of youtube urls - one url per line at `converter` directory. (Optional upload MP3 files into `input` directory)
+2. Create `urls.txt` file with a list of youtube urls - one url per line at project directory. (Optional upload MP3 files into `input` directory)
 3. Run main.py
 4. After processing is finished check results at `output` directory 
 

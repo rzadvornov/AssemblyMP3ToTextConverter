@@ -1,10 +1,11 @@
 from betterconf import AbstractProvider
+import os
 
 import json
 
 
 class JSONProvider(AbstractProvider):
-    SETTINGS_JSON_FILE = "../config/settings.json"
+    SETTINGS_JSON_FILE = os.path.join(os.getcwd(), "config", "settings.json")
 
     def __init__(self):
         with open(self.SETTINGS_JSON_FILE, "r") as f:
