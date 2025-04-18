@@ -8,7 +8,6 @@ from converter.transcriber import transcribe_audio
 if __name__ == '__main__':
     inputDir = "input"
     outputDir = "output"
-    pathlib.Path(inputDir).mkdir(exist_ok=True)
 
     download_mp3_from_youtube_urls(inputDir)
     filesToProcess = [os.path.join(inputDir, f) for f in os.listdir(inputDir) if
