@@ -15,15 +15,6 @@ config = aai.TranscriptionConfig(speaker_labels=True, language_detection=True)
 transcriber = aai.Transcriber()
 
 def transcribe_audio(files, input_dir, output_dir, max_workers=None):
-    """
-    Transcribe audio files in parallel using concurrent.futures.
-
-    Args:
-        files: List of audio file paths
-        input_dir: Input directory path
-        output_dir: Output directory path
-        max_workers: Maximum number of worker threads (None = auto-determined)
-    """
 
     print(f"[Transcribing] {len(files)} files to {output_dir} using parallel processing...")
 

@@ -7,11 +7,6 @@ __all__ = [
 ]
 
 def download_mp3_from_youtube_urls(input_dir):
-    """
-        Download audio files from youtube in parallel using concurrent.futures.
-        Args:
-            input_dir: Input directory path
-    """
 
     os.makedirs(input_dir, exist_ok=True)
 
