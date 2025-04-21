@@ -14,13 +14,13 @@ aai.settings.api_key = config.settings.cfg.API_KEY
 config = aai.TranscriptionConfig(speaker_labels=True, language_detection=True)
 transcriber = aai.Transcriber()
 
-def transcribe_audio(files, input_dir, output_dir, max_workers=None):
+def transcribe_audio(files, input_dir, output_dir):
 
     print(f"[Transcribing] {len(files)} files to {output_dir} using parallel processing...")
 
     os.makedirs(output_dir, exist_ok=True)
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=None) as executor:
         future_to_file = {
             executor.submit(
                 transcribe_single_file,
