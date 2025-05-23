@@ -4,6 +4,7 @@
 Assembly MP3 to Text Converter is a powerful and intuitive application designed to convert spoken audio from MP3 files into accurate text transcriptions. Built with speech recognition technology optimized for multiple languages, this tool helps you quickly transcribe interviews, lectures, meetings, and other audio recordings.
 
 ## Features
+- **Download MP3 from Youtube**: Downloads MP3 files from Youtube for transcription
 - **Fast Processing**: Convert audio to text using efficient speech recognition algorithms
 - **Multi-language Support**: Transcribe audio in multiple languages including English, Ukrainian, Russian, German, French, and more
 - **Speaker Identification**: Automatically differentiate between multiple speakers (when detectable)
